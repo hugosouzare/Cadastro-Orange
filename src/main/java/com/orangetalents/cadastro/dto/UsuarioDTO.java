@@ -1,5 +1,7 @@
 package com.orangetalents.cadastro.dto;
 
+import java.time.LocalDate;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -14,13 +16,17 @@ public class UsuarioDTO {
 	
 	@Email
 	private String email;
+	
+	private LocalDate nascimento;
 
 	
-	public UsuarioDTO(String nome, String cpf, String email) {
+	public UsuarioDTO(String nome, String cpf, String email, LocalDate nascimento) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
+		this.nascimento = nascimento;
+		
 	}
 
 	public String getNome() {
@@ -45,6 +51,14 @@ public class UsuarioDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public LocalDate getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
 	}
 
 }

@@ -1,19 +1,18 @@
 package com.orangetalents.cadastro.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -34,6 +33,9 @@ public class Usuario implements Serializable {
 
 	private String cpf;
 	
+	
+	private LocalDate nascimento;
+	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE, orphanRemoval = true)
 	private List<Endereco> endereco = new ArrayList<>();
 
@@ -42,11 +44,12 @@ public class Usuario implements Serializable {
 	   
    }
 
-	public Usuario(String nome, String email, String cpf) {
+	public Usuario(String nome, String email, String cpf, LocalDate nascimento) {
 		super();
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
+		this.nascimento = nascimento;
 	}
 
 	public Long getId() {
@@ -92,6 +95,14 @@ public class Usuario implements Serializable {
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public LocalDate getNascimento() {
+		return nascimento;
+	}
+
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
 	}
 	
 }

@@ -45,7 +45,7 @@ public class UsuarioService {
 	}
 
 	public Usuario userFromDTO(UsuarioDTO user) {
-		Usuario us = new Usuario(user.getNome(), user.getEmail(), user.getCpf());
+		Usuario us = new Usuario(user.getNome(), user.getEmail(), user.getCpf(), user.getNascimento());
 		return us;
 	}
 
